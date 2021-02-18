@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- CPU -->
+    <div class="box">
+        <span class="label" id="cpuLabel">CPU:</span>
+        <span class="number" id="cpu">100%</span>
+    </div>
+</body>
+
+<script>
+    // set the CPU usage
+    function setCpuVal(value) {
+        document.getElementById("cpu").innerHTML = value + "%";
+        num = parseInt(value);
+        if (num < 10) { changeBgColor("#373853"); }
+        else if (num < 20) { changeBgColor("#453753"); }
+        else if (num < 30) { changeBgColor("#59643b"); }
+        else if (num < 40) { changeBgColor("#64583b"); }
+        else if (num < 50) { changeBgColor("#856e32"); }
+        else if (num < 60) { changeBgColor("#a05f42"); }
+        else if (num < 70) { changeBgColor("#a04297"); }
+        else if (num < 80) { changeBgColor("#d84389"); }
+        else if (num < 90) { changeBgColor("#ee3f45"); }
+        else {
+            changeBgColor("#ee0008");
+        }
+    }
+    // auto set, callback of setInterval
+    function autoCpuVal() {
+        fetch("http://127.0.0.1:8080/cpu")
+            .then(response => response.json())
+            .then(json => setCpuVal(json.usage));
+    }
+    // change background color gradually
+    function changeBgColor(color) {
+        var obj = document.body;
+        obj.style.background = color;
+    }
+    // main
+    setInterval(autoCpuVal, 4000);
+    autoCpuVal();
+</script>
+<style>
+    /* group of "CPU: 0%" */
+    body {
+        background: #373853;
+        transition: 1s;
+    }
+
+    .box {
+        position: absolute;
+        height: 60px;
+        width: 400px;
+        margin-top: -30px;
+        margin-left: -200px;
+        left: 50%;
+        top: 50%;
+        /* border: 1px solid black; */
+    }
+
+    .number {
+        font-family: arial;
+        font-size: 40px;
+        letter-spacing: 10px;
+        color: white;
+    }
+
+    .label {
+        font-family: arial;
+        font-weight: 1;
+        font-size: 40px;
+        letter-spacing: 10px;
+        color: white;
+        padding-right: 60px;
+    }
+</style>
+
+</html>
