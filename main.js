@@ -1,18 +1,26 @@
 function setCpuVal(value) {
     document.getElementById("cpu").innerHTML = value + "%";
-    num = parseInt(value);
-    if (num < 10) { changeBgColor("#373853"); }
-    else if (num < 20) { changeBgColor("#453753"); }
-    else if (num < 30) { changeBgColor("#59643b"); }
-    else if (num < 40) { changeBgColor("#64583b"); }
-    else if (num < 50) { changeBgColor("#856e32"); }
-    else if (num < 60) { changeBgColor("#a05f42"); }
-    else if (num < 70) { changeBgColor("#a04297"); }
-    else if (num < 80) { changeBgColor("#d84389"); }
-    else if (num < 90) { changeBgColor("#ee3f45"); }
-    else {
-        changeBgColor("#ee0008");
+    // value: 12.7%
+    // num: 12
+    var num = parseInt(value);
+    // first: 1
+    var first = parseInt(num / 10);
+    if (first > 9){
+        first = 9;
     }
+    var c = [
+        "#477066",  // 0
+        "#02774f",  // 1
+        "#285b41",  // 2
+        "#07817a",  // 3
+        "#0b2d64",  // 4
+        "#3f4470",  // 5
+        "#732e7e",  // 6
+        "#99004d",  // 7
+        "#ce3b3b",  // 8
+        "#f52443",  // 9
+    ];
+    changeBgColor(c[first]);
 }
 // auto set, callback of setInterval
 function autoCpuVal() {
@@ -25,6 +33,25 @@ function changeBgColor(color) {
     var obj = document.body;
     obj.style.background = color;
 }
+function clock() {
+    date = new Date();
+    hour = date.getHours();
+    minute = date.getMinutes();
+    second = date.getSeconds();
+    if (second < 10) {
+        second = '0' + second;
+    }
+    if (minute < 10) {
+        minute = '0' + minute;
+    }
+    if (hour < 10) {
+        hour = '0' + hour;
+    }
+    var timeStr = `${hour}:${minute}:${second}`;
+    document.getElementById("clock").innerHTML = timeStr;
+}
 // main
-setInterval(autoCpuVal, 4000);
-autoCpuVal();
+// setInterval(autoCpuVal, 4000);
+// autoCpuVal();
+setInterval(clock, 1000);
+clock();

@@ -5,25 +5,50 @@ body {
 }
 .box {
     position: absolute;
-    height: 60px;
+    height: 200px;
     width: 400px;
-    margin-top: -30px;
-    margin-left: -200px;
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    /* border: 1px solid black; */
+    border: 2px dotted rgb(250, 140, 140);
 }
-.number {
+.value {
+    display:block;
+    float:right;
+    text-align:right;
     font-family: arial;
     font-size: 40px;
     letter-spacing: 10px;
     color: white;
+    text-shadow: 0px 0px 7px #ffffff;
 }
 .label {
-    font-family: arial;
+    font-family: serif;
+    font-size: 30px;
+    display:block;
+    float:left;
+    text-align:left;
     font-weight: 1;
-    font-size: 40px;
     letter-spacing: 10px;
     color: white;
     padding-right: 60px;
+    margin-top: 6px;
+}
+#clock{
+    display:block;
+    font-family: arial;
+    font-size: 80px;
+    letter-spacing: 10px;
+    color: white;
+    text-align:center;
+    /* margin: 0 auto; */
+    /* border: 2px dotted rgb(42, 190, 22); */
+}
+#clockLine{
+    width: 400px;
+    height:2px;
+    background:white;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
