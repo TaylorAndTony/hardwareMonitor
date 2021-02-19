@@ -5,26 +5,26 @@ function setCpuVal(value) {
     var num = parseInt(value);
     // first: 1
     var first = parseInt(num / 10);
-    if (first > 9){
+    if (first > 9) {
         first = 9;
     }
     var c = [
-        "#477066",  // 0
-        "#02774f",  // 1
-        "#285b41",  // 2
-        "#07817a",  // 3
-        "#0b2d64",  // 4
-        "#3f4470",  // 5
-        "#732e7e",  // 6
-        "#99004d",  // 7
-        "#ce3b3b",  // 8
-        "#f52443",  // 9
+        "#1d2d50",  // 0
+        "#263b68",  // 1
+        "#2d4477",  // 2
+        "#354f8a",  // 3
+        "#3e5a99",  // 4
+        "#4464ac",  // 5
+        "#6244ac",  // 6
+        "#7c44ac",  // 7
+        "#a044ac",  // 8
+        "#ac4485",  // 9
     ];
     changeBgColor(c[first]);
 }
 // auto set, callback of setInterval
 function autoCpuVal() {
-    fetch("http://127.0.0.1:8080/cpu")
+    fetch("http://127.0.0.1:8080/info")
         .then(response => response.json())
         .then(json => setCpuVal(json.usage));
 }
@@ -51,7 +51,7 @@ function clock() {
     document.getElementById("clock").innerHTML = timeStr;
 }
 // main
-// setInterval(autoCpuVal, 4000);
-// autoCpuVal();
+setInterval(autoCpuVal, 4000);
+autoCpuVal();
 setInterval(clock, 1000);
 clock();

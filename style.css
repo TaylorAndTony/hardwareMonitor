@@ -10,7 +10,7 @@ body {
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    border: 2px dotted rgb(250, 140, 140);
+    /* border: 2px dotted rgb(250, 140, 140); */
 }
 .value {
     display:block;
@@ -23,7 +23,7 @@ body {
     text-shadow: 0px 0px 7px #ffffff;
 }
 .label {
-    font-family: serif;
+    font-family: arial;
     font-size: 30px;
     display:block;
     float:left;
@@ -41,8 +41,6 @@ body {
     letter-spacing: 10px;
     color: white;
     text-align:center;
-    /* margin: 0 auto; */
-    /* border: 2px dotted rgb(42, 190, 22); */
 }
 #clockLine{
     width: 400px;
